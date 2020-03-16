@@ -68,6 +68,8 @@ HyperTrack wrapper will throw `HyperTrackException` in case of any errors from H
 Exception will represent HyperTrack error [object](https://docs.hypertrack.com/#references-http-errors).
 
 ```python
+    from hypertrack.exceptions import HyperTrackException
+    
     try:
         hypertrack.devices.get('AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA')
     except HyperTrackException as e:
