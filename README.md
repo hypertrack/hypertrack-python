@@ -1,4 +1,4 @@
-# hypertrack-pyhon
+# hypertrack-python
 
 ### Installation
 
