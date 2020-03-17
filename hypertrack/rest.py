@@ -14,7 +14,6 @@ class Client:
         self.secret_key = secret_key
 
         self.requests = HTSession(base_url=BASE_URL)
-        print(self._encode_credentials(account_id, secret_key))
         self.requests.headers.update({
             'Authorization': 'Basic {}'.format(self._encode_credentials(account_id, secret_key))
         })

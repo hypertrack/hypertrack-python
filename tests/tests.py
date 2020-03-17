@@ -56,9 +56,49 @@ class TestDevicesAPI(unittest.TestCase):
 
 class TestTripsAPI(unittest.TestCase):
     def test_get_create_complete_trip(self):
-        trip = hypertrack.trips.create({'device_id': DEVICE_ID})
-        self.assertEqual(trip['device_id'], DEVICE_ID)
+        # Create trip
+        trip = hypertrack.trips.create({
+            'device_id': DEVICE_ID,
+            'geofences': [{
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  35.105761016637075,
+                  47.856801319070776
+                ]
+              },
+              "radius": 65,
+              "metadata": {"id": "dec43d3c-766c-4f6a-bd78-dfe873556782"}
+            }, {
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  35.10460766676067,
+                  47.85663214471151
+                ]
+              },
+              "radius": 55,
+              "metadata": {"id": "f2e56252-53e3-4194-8d53-d946716618e7"}
+            }]
+        })
+        self.assertEqual(trip['status'], 'active')
+        self.assertEqual(len(trip['geofences']), 2)
+
+        # Get trip geofences
+        geofence_id = trip['geofences'][0]['geofence_id']
+        geofence = hypertrack.trips.get_geofence(trip['trip_id'], geofence_id)
+        self.assertEqual(geofence['radius'], 65)
+        self.assertEqual(geofence['metadata']['id'], 'dec43d3c-766c-4f6a-bd78-dfe873556782')
+
+        # Change geofence metadata
+        hypertrack.trips.patch_geofence_metadata(trip['trip_id'], geofence_id, {'id': '123'})
+        geofence = hypertrack.trips.get_geofence(trip['trip_id'], geofence_id)
+        self.assertEqual(geofence['metadata']['id'], '123')
+
+        # Complete Trip
         hypertrack.trips.complete(trip['trip_id'])
+
+        # Get Trip
         get_trip = hypertrack.trips.get(trip['trip_id'])
         self.assertTrue(get_trip['status'] in ['completed', 'processing_completion'])
 
@@ -66,6 +106,7 @@ class TestTripsAPI(unittest.TestCase):
         trips = hypertrack.trips.get_all()
         self.assertTrue(isinstance(trips, dict))
         self.assertTrue('data' in trips)
+
 
 if __name__ == '__main__':
     unittest.main()

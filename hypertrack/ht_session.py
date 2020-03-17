@@ -36,7 +36,6 @@ class HTSession(requests.Session):
                     raise HyperTrackException(**error_resp)
                 else:
                     msg = error_resp['message'] if 'message' in error_resp else response.text
-                    print(msg)
                     raise HyperTrackException(status=response.status_code, title=msg, code='generic_error')
             except ValueError:
                 raise HyperTrackException(status=response.status_code, title=response.text, code='generic_error')

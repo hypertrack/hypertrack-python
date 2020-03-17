@@ -37,7 +37,7 @@ class HyperTrackException(Exception):
                 if (not self.title or self.title == 'about:blank') and self.status in httplib.responses:
                     problem_dict['title'] = httplib.responses[self.status]
             except Exception as e:
-                print(e)
+                pass
 
         if self.title:
             problem_dict['title'] = str(self.title)
