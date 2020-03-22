@@ -1,6 +1,6 @@
-# hypertrack-node
+# hypertrack-python
 
-HyperTrack API Node.js module
+HyperTrack API Python package
 
 ## Installation
 
