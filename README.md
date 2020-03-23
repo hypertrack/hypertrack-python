@@ -49,7 +49,7 @@ trip = hypertrack.trips.create(trip_data)
 | `.get_all(pagination=False, pagination_token)`  | Get all tracked devices. | `pagination` - if set to `True` it will split result by pages and response will containe `pagination_token` <br/> `pagination_token` - that should be provided to fetch next page |
 | `.get(device_id)`  | Get a single device | `device_id` - a string representing the ID of a tracked device, case sensitive|
 | `.get_history(device_id, history_date)`  | Get a single device history. | `device_id` - a string representing the ID of a tracked device, case sensitive<br/>`history_date` - a string representing specific date in format YYYY-MM-DD |
-| `.get_account_history(history_date)`  | Get data for all tracked devices for a specified day. Data is available for the the last 60 days. | `history_date` - a string representing specific date in format YYYY-MM-DD<br/>`response` - response object can be one of: `blob` or `file`<br/>`response_type` - response type can be one of: `json` or `csv`<br/>`unit` - metric or imperial system: `km` or `mi` |
+| `.get_account_history(history_date, response, response_type, unit)`  | Get data for all tracked devices for a specified day. Data is available for the the last 60 days. | `history_date` - a string representing specific date in format YYYY-MM-DD<br/>`response` - response object can be one of: `blob` or `file`<br/>`response_type` - response type can be one of: `json` or `csv`<br/>`unit` - metric or imperial system: `km` or `mi` |
 | `.delete(device_id)`  | Remove a single device. Once it is removed, the device will not be able send location data| `device_id` - a string representing the ID of device, case sensitive |
 
 ### Trips API methods
