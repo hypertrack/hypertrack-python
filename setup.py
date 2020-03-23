@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="hypertrack",
-    version="3.0.2",
+    version="3.0.3",
     author="HyperTrack",
     author_email="help@hypertrack.com",
     description="HyperTrack API wrapper",
