@@ -11,7 +11,7 @@ package manager for Python.
 
 ## Setting Started and Documentation
 
-To get started, visit this [page](https://www.hypertrack.com/docs/references/#references-helper-libraries-node-js-helper-library).
+To get started, visit this [page](https://www.hypertrack.com/docs/references/#references-helper-libraries-python-helper-library).
 
 The documentation for the HyperTrack API and library usage can be found [here](https://www.hypertrack.com/docs/references/#references-apis).
 
