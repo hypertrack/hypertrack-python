@@ -135,3 +135,12 @@ class Devices:
         :return: None
         """
         return self.r.delete(self.r.build_url(self.base_url, device_id))
+
+    def undelete(self, device_id):
+        """
+        Undelete a device. Once undeleted, the device will be trackable again.
+
+        :param device_id: string device ID
+        :return: None
+        """
+        return self.r.post(self.r.build_url(self.base_url, device_id, 'undelete'))
